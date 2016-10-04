@@ -1,0 +1,79 @@
+Q1
+.bash_profile is executed when you login into a shell and .bashrc is executed when you start a new bash instance
+
+Q2
+Created vi_lab file
+
+Q3
+-rw-r--r-- 1 jam699 jam699 8059 Sep 21 18:29 funny
+-rwxr-xr-x 1 jam699 jam699  240 Sep 21 18:29 hello.bash
+-rw-rw-r-- 1 jam699 jam699  123 Sep 21 19:04 lab1.txt
+-rw-rw-r-- 1 jam699 jam699   14 Sep 21 14:34 vi_lab
+
+Q4
+-rw-r--r-- 1 jam699 jam699   14 Sep 21 14:34 vi_lab
+Gave myself only read and write access and everyone else only read access
+
+Q5
+Chmod 755 gives me the ability to read write excute and everyone else can run/ read it
+
+Q6
+Yes I can read the funny file after chmod 644 it.
+
+Q7
+Yes I can read hello.bash after 644 it.
+
+Q8
+No Permission was denied.
+
+Q9
+chmod 755, chmod chmod 700
+
+Q10
+E45: 'readonly' option is set (add ! to override) 
+Could not write to file becuase of the permissions.
+
+Q11
+annoy     funny       itemList        lab1.txt       UnitTestingPhase
+annoy.cc  hello.bash  itemList-2cols  TelecomTruths  vi_lab
+
+annoy  annoy.cc
+
+itemList  itemList-2cols  TelecomTruths
+
+annoy
+
+ls: cannot access 'annoy?': No such file or director
+Q12
+Created a file named a not a space like was trying to do.
+Adding the backslash character created the file a space
+
+Q13
+-bash: b: No such file or directory
+Is a < b?
+$USER is jam699
+\$USER is $USER
+Today is Thu Sep 22 12:19:24 EDT 2016
+Today is Thu Sep 22 12:19:41 EDT 2016
+Today is `date`
+ls: cannot access 'e*': No such file or directory
+Files that start w/e:
+
+Q14
+-n compares according to string numerical value and default sort looks at the contents of the string.
+
+Q15
+sort -n -r itemList-2cols 
+
+Q16
+lab1.tgz  is in its place
+
+Q17
+*.tgz file was replaced with lab1.tar
+
+Q18
+./TelecomTruths:32:"Vacation" is something you roll over to next year, or a check you get
+
+Q19
+grep -nr "Vacation" .
+
