@@ -1,0 +1,22 @@
+#!/bin/bash
+#Joseph Mulray
+
+if [ $# == 0 ]; then
+    echo "No arguments passed. Exiting." ; exit
+
+elif [ -z $2 ]; then
+        echo "Not enough arguments. Exiting." ; exit
+
+fi
+for file in *; do
+        extension="${file##*.}"
+	filename="${file%.*}"
+	if [ $filename == $extension ]; then
+		if [ $1 == ${filename:(-1)} ]; then
+			mv $filename ${filename::-1}$2
+		fi
+	elif [ $1 == .$extension ]; then
+		mv $file $filename$2
+	fi
+done
+

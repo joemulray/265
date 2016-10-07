@@ -1,0 +1,52 @@
+#Joseph Mulray
+#LAB 2
+
+Q1
+./.bash_history
+./.lab2.swp
+
+Q2
+find -name "*.bash"
+
+Q3
+./tmp/gotMe.bash
+
+Q4
+wc -mlw breadIsDangerous.txt
+  97  499 2960 breadIsDangerous.txt
+97 line breaks, 499 words, 2969 characters
+
+Q5
+grep -r "the" breadIsDangerous.txt  | wc -l
+8 lines
+
+Q6
+Creates a spellExample.bak backup file that has the old file with the misspelled words. Prompts you to replace or ignore each word.
+
+Q7
+Prints the output of of each different line.
+
+< I went to a garden party
+---
+> I went to a gadren party
+3c3
+< bunch of my old friends did something
+---
+> bnuch of my old freinds did somehting
+
+Q8
+Did not print anything because there is no difference in the same file.
+
+Q9
+Outputs the exit status of the last command. 0 is no exit error. 1 is a catchall for all general errors. 2 is the misuse of shell builtins.
+
+roven that as little as one pound of dough can be used to
+5.   Bread is made from a substance called "dough." It has been
+proven that as little as one pound of dough can be used to
+0
+
+1
+
+grep: noSuchFile: No such file or directory
+2
+

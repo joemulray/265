@@ -1,0 +1,21 @@
+#!/bin/bash
+#Joseph Mulray
+for file in *; do
+	extension="${file##*.}"
+
+	if [ "$extension" = "mp3" ]; then
+		artist="${file%-*}"
+       		filename="${file%.*}"
+		song="${file##*- }" ; echo $song
+		if [ ! -d "$artist" ]; then
+			mkdir "$artist"
+			mv "$file" "$song"
+			mv "$song" "./$artist"
+		else
+			mv "$file" "$song"
+			mv "$song" "./$artist"
+		fi
+			
+	fi        
+done
+
