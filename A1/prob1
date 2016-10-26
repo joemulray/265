@@ -1,0 +1,16 @@
+#!/bin/bash
+#Joseph Mulray
+#The purpose of this program is to determine the number of directories containing problems
+
+
+#Archive used for testing
+#ARCHIVE="/home/kschmidt/public_html/Files/DrMathArchive"
+
+#Number of directories in the folder
+directory=$(ls -d $ARCHIVE/*/ | wc -l)
+
+#Number of problems 
+problems=$(ls -R -l $ARCHIVE/*/ | egrep -n "prob*" | wc -l )
+
+#Printing output
+echo -e "$directory\t$problems"

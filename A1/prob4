@@ -1,0 +1,28 @@
+#!/bin/bash
+#Joseph Mulray
+#Purpose of this program is to pull the hostname off of every email note all the different hostnames and count how many messages were sent to each hostname
+
+#Archive used for testing
+#ARCHIVE="/home/kschmidt/public_html/Files/DrMathArchive"
+
+#Read all the files starting with email regular expression
+#store in a tempory file 
+
+grep -oErh "\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,6}\b" $ARCHIVE/* >> tempfile
+
+#Remove email information and leave hostname
+while read email; do
+	
+	#Extenstion to remove user info and keep hostname data
+	extension="${email##*@}"
+	echo $extension >> temp
+done < tempfile
+
+#Sort the host names remove duplicates and order by number in desceding order
+sort --ignore-case temp | uniq -cdi | sort -nr -o temp
+
+#Print hostnames and their #of messages sent there
+awk '{print $2, $1}' temp
+
+#Remove temp files
+rm temp tempfile

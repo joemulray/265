@@ -1,0 +1,24 @@
+#!/bin/bash
+#Joseph Mulray
+#The purpose of this program is a script that takes, as command-line arguments, the year, month and day, in that order. and returns a list of messages that were sent on that day.
+
+#Archive used for testing
+#ARCHIVE="/home/kschmidt/public_html/Files/DrMathArchive"
+
+
+#No arguments passed exit program
+if [ $# == 0 ]; then
+    echo "No arguments passed. Exiting." ; exit
+
+fi
+
+#Format of the date from input /Month/Day/Year
+date="$3/$2/$1"
+
+#Search ARCHIVE using grep to get files
+files=$(grep -rl $date $ARCHIVE)
+
+#Print files matching date input
+for file in $files; do
+	echo $(basename $file)
+done

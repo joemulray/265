@@ -1,0 +1,41 @@
+#!/bin/bash
+
+ARCHIVE="/home/kschmidt/public_html/Files/DrMathArchive"
+
+
+#Cycle through folders to get prob files
+for folder in $ARCHIVE/*/; do
+		
+		#Print the names to a temp file
+		for file in $folder*; do	
+			name=$(basename $file)
+			printf $name"\n">> temp
+		done
+done
+
+largestThread=0
+largestFile=''
+
+#Read temp file
+while read name; do
+
+#Parse filename find longest thread
+filename="${name%_*}"
+numThread=$(grep $filename temp | wc -l)
+
+#Skip file it is already the largest Thread
+if [ "$filename" != "$largestFile" ]; then
+
+	#If longest thread set variables
+	if [ $numThread -gt $largestThread ]; then
+		largestThread=$numThread
+		largestFile=$filename
+	fi
+fi	
+done <temp
+
+#Remove temp file
+rm temp
+
+#Print largest
+printf "$largestThread\t$largestFile\n"

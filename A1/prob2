@@ -1,0 +1,34 @@
+#!/bin/bash
+#Joseph Mulray
+#The purpose of the file is to determine how many messages are in the longest thread.
+#And list all of the threads that are of that length.
+
+#Achive used for testing
+#ARCHIVE="/home/kschmidt/public_html/Files/DrMathArchive"
+
+#global variables for longest thread and filename
+largestThread=0
+largestFile=""
+
+#Cycle through each folder of the archive.
+for folder in $ARCHIVE/*/; do
+	if [ -d $folder ]
+		cd $folder
+		
+		#For each file search for number of threads for that filename
+		for file in *; do
+			filename="${file%_*}"
+			numThread=$(find -name "$filename*"| wc -l)
+				
+				#If that file has the largest thread replace current highest value
+                                 if [ $numThread -gt $largestThread ]; then
+   	                              	largestThread=$numThread
+                                 	largestFile=$filename
+                                  fi
+                done
+		cd ..
+	fi
+done
+#Output largest thread and filename
+printf "$largestThread\t$largestFile\n"
+

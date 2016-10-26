@@ -1,0 +1,21 @@
+#!/bin/bash
+largestThread=0
+largestFile=''
+ while read name; do
+  
+ filename="${name%_*}"
+  numThread=$(grep $filename temp | wc -l)
+ 
+  if [ "$filename" != "$largestFile" ]; then
+
+          if [ $numThread -gt $largestThread ]; then
+                  largestThread=$numThread
+                  largestFile=$filename
+          fi
+  fi
+  done <temp
+  
+  echo $largestThread
+  echo $largestFile
+ 
+

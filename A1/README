@@ -1,0 +1,9 @@
+Joseph Mulray
+CS265 Assignment 1
+
+No other files needed to run files. For problem two wrote two files one that used a temp file to store all the emails 
+and use a grep from there, and other one to use find on the current archive directory and word count the highest threat.
+Submitted the wc find file, other program was taking substantially longer almost five mintues to run. Got same output just figured 
+faster was better.
+
+ 
