@@ -1,0 +1,64 @@
+Exersize 1.1
+The following choice of names and values in the code are bad coding. ch and EOF are not clear and shouldn't have all capital names
+
+1.2
+I would change the name because it is an active function and add comments
+int isSmaller(char *s, char *t) // fuction to compare two char values and return true if so
+
+1.3
+Read the code out loud
+
+Section 1.2
+Exersize 1-4
+if (! strcasecmp(c,'y'))
+	return:
+
+newLength = (length < bufSize) ? length : bufSize;
+
+flag? 0:1;
+quote = (*line == null)? 1: 0;
+
+if (val)
+bit = 1;
+else
+bit = 0;
+
+Exersize 1.5
+Trying to insert chars and integers 
+
+Exersize 1.6
+Could output 1, 2 and 4 .
+
+Exersize 1.7
+
+switch(istty){
+case (stdin):
+	break;
+case (stdout):
+	break;
+case (stderr):
+	break;
+default:
+	return 0;
+}
+
+
+if (retval != SUCCESS) return (retval);
+
+Exersize 1.8
+Count is incremented first and total is not defined, if total was equal to zero statement would never be executed. 
+
+
+Exersize 1.9
+The problem with this macro definition is the name of the definition of choice. Definition name should not be in all caps for an active function.
+
+Exersize 1.10
+Make the defintions more clearer, and use variable types, float int double there is none so executing fucntion with trying to use these variables could cause wrong output or syntax erros.
+
+Exersize 1.11
+
+First comment does not speicify what the function even does just comments on return type
+
+Comment in the center does not specifty if in the if statement of write another function just has a task to do
+
+incriment line counter does not give what the function write_message is doing just noticing of increment
