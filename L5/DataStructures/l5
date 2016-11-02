@@ -1,0 +1,92 @@
+Joseph Mulray
+Lab 5 Data Structures
+
+Q1
+i. List - A list is a linear collection of data elements, called nodes, each pointing to the next node by means of a pointer. The beginning of a linked list is head value that points to the first item in a list while the last item points to null.
+
+ii. Stack - A data structure that serves as a list of elements which are inserted or removed in last in first out (LIFO)
+
+iii. Queue - A data structure similar to Stack, that is a list of elements which are inserted and removed in a first in, first out order.
+
+iv. Dictionary (Map) - A set of two lists that where one of the values in the second list corresponds to one or several keys in the first list.
+
+
+Q2
+log2(n) times, Binary search splits a sorted list in half and continues to do so until the value is found
+
+Q3
+n times is the maximum amount of times for linear search
+
+Q4
+Linear search would be preferable over binary search when the list is not sorted. Binary search only uses a sorted list so if the list is not sorted no gaurentee of even finding that vlaue
+
+Q5
+First Pivot:
+*84*  37 93 82 98 27 63 73 93 27 75 55 45 8
+
+37 82 27 63 73 27 75 55 45 8  *84*  93 98 93
+*37*  82 27 63 73 27 75 55 45 8 84  *93*  98 93
+27 27 8  *37*  82 63 73 75 55 45 84  *93*  98 93
+*27* 27 8 37  *82*  63 73 75 55 45 84 93  *98*  93
+8 *27* 27 37 63 73 75 55 45 *82* 84 93 93  *98*  
+8 27 27 37  *63*  73 75 77 45 82 84 93 93 98
+8 27 27 37 45  *63*  73 75 77 82 84 93 93 98
+8 27 27 37 45 63  *73*  75 77 82 84 93 93 98
+
+Last Pivot:
+8 27 27 37 45 63 73  *75*  77 82 84 93 93 98
+
+Quicksorted List:
+8 27 27 37 45 63 73 75 77 82 84 93 93 98
+
+
+Q6
+d1.c built list
+[ 3 -> 24 -> 06] 
+
+Q7
+ll.py built list
+[13, [28, [24, [3, none ] ] ] ]
+
+Q8
+#######################################################
+buffer is:
+	on the footsteps of dawn
+After assignment, s is:
+	on the footsteps of dawn
+
+After modifying s, it is:
+	on the footsteps of dawn... who's never ever been born
+But buffer is:
+	on the footsteps of dawn... who's never ever been born
+
+Try again...
+After modifying s, it is:
+	on the footsteps of dawn... who's never ever been born
+But buffer is:
+	on the footsteps of dawn
+#######################################################
+
+The two outputs are different for the last line is because s is not being pointed at the buffer, so when the value of s is changed the value of the buffer is not causing the output to display two different values of the pointers
+
+Q9
+hash.c resulting table
+3 -> [Bob,38],[Cos,86]
+4 -> [Vera,99],[Nash,11],[Kate,28],[Jaga,24]
+5 -> [Jesse,78]
+
+Q10
+
+int find( char *key, int *p_ans ){
+
+while(key != NULL){
+
+if(*key == *p_ans){
+	return 1;  // return true if table key value matches data passed through
+}
+
+key = key->next; // iterate through table 
+}
+
+return 0;  // reaches end of the table return 0;
+}
