@@ -1,7 +1,0 @@
-Joseph Mulray
-Assingment 2
-Nov 1 2016
-
-You can do a quick check that goes through every attempt by indending the last line.
-Also you can get a quick success by doing attempts -1 example , ./knight.py 4 3 -1, will run until there is a success
-
