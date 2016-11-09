@@ -1,0 +1,84 @@
+Joseph Mulray
+Lab 6
+The Markov Chain algorithm
+
+
+Q1
+The difference between add() and addSuffix is add() is used to add a string prefix and a suffix to the table while addSufix is used to add a new suffix to the hash table.
+
+
+Q2
+Lookup takes a boolean and a string prefix and determines if a new state should be created. It loops through the linked list in the states table until the match is found and returns the pointer to the location in memory.
+
+Q3
+
+Input its a new dawn and running build
+
+Prefix 	      |   Suffix
+____________________________
+(null) (null) | It's
+(null) It's   | a
+It's   a      | new
+a      new    | dawn
+new    dawn   | (null)
+__________________________
+
+"It's" - 3 references
+"a" - 3 references
+"new" - 3 references
+"dawn" - 2 references
+
+Q4
+The advantages of doing this are it uses a minimum amount of memory storage. Each string is allocated only the memory that it needs.
+
+Q5
+Drawbacks would be having to free memory after the program is over so memory can be used elsewhere/ for other pointers. 
+
+Q6
+
+//Function to clean up statetab
+ 
+void cleanup(State *statetab){
+	while(statetab != null){
+		free(statetab);
+		statetab = statetab->next;
+	}
+}
+
+
+Q7
+Function works properly, there was some confusion on whether to allocate the memory or to delete the memory, could have used the delete function in C++ would have given same results but if you are just cleaning the list up then freeing makes more sense. 
+
+Q8
+You could track a pointer and the value attached to it and check if the pointer still equals that value prior to freeing the value and after freeing the value.
+This way you could tell if that a memory location is freed only once or the value tied to that pointer still exists.
+
+Q9
+Prefixes are stored in a deque, double ended queue which allow for the individual elements to be accessed directly through random access iterators, with storage handled automatically by expanding and contracting the container as needed. Deques are better at inserting and deleting elements at the beginning and end of a sequence. Also deque elements can be scattered in different areas of storage while keeping track of each position and pointer.
+
+Q10
+A map serves as a dictionary.
+
+Q11
+Satellite data (list of suffices) are stored as a vectors of suffices
+
+Q12
+Advantages in C++ over C implementation are that less repeation in code due to due the standard library. Less pointers to create and cleaner code as a result. Also due to the build in functions that make code easer to understand/more efficient for example destructors and constructors.
+
+Q13
+Drawbacks to using C++ over C are more memory allocation usually causing C++ to generally be slower than C
+
+Q14
+The prefixes are stored as tuples.
+
+Q15
+A dictionary serves as the hash table in python.
+
+Q16
+The satellite data is stored in a list object
+
+Q17
+Python in my opinion is alot easier to understand and follow than C++, there are no pointers in python so it makes code cleaner with objects and references.
+
+Q18
+Drawbacks in python are not being able to use pointers, everything is stored in object (list, dict, tuple) no real memory and data management like in C++ with freeing and allocation memory. 
