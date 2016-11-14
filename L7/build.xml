@@ -1,0 +1,43 @@
+<project default="compile">
+
+	<target name="prob1">
+	<javac srcdir='./' includes='prob1.java' includeantruntime = "false"/>
+	<java classname = "prob1" fork = "true">
+	<arg value = "Gertrude">
+	
+	</arg>
+	</java>
+	</target>
+
+		<target name="prob2">
+		<javac srcdir='./' includes='prob2.java' includeantruntime = "false"/>
+		<java classname = "prob2" fork = "true">
+		<arg value = "28">
+
+	</arg>
+	</java>
+	</target>
+
+
+		<target name="prob3">
+		<javac srcdir='./' includes='prob3.java' includeantruntime = "false"/>
+		<java classname = "prob3" fork = "true">
+		<arg value = "2001">
+
+	</arg>
+	</java>
+	</target>
+
+
+
+		<target name="prob4">
+		<javac srcdir='./' includes='prob4.java' includeantruntime = "false"/>
+		<java classname = "prob4" fork = "true">
+		<arg value = "2">
+
+	</arg>
+	</java>
+	</target>
+
+</project>
+
