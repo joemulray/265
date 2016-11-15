@@ -97,8 +97,6 @@ def printBoard(board, isFalse):
 	print ""
 
 
-
-
 """run program"""	
 if __name__ == '__main__':
 	
