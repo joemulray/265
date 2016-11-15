@@ -17,9 +17,7 @@ def success(board):
 			if (value == 'x'):
 				isTrue = False
 
-
 	return isTrue	
-
 
 """creating the board, depending on user input"""
 def createBoard():
@@ -44,7 +42,6 @@ def getMoves(board, move=1, rowPos=0, colPos=0):
 	#increment number of moves, create list of available positions
 	move += 1	
 	available = []
-
 
 	#array of all possible moves by a knight piece
 	allMoves = [[2,1], [2,-1], [-2,1], [-2,-1], [1,2], [1,-2], [-1,2], [-1,-2]]
@@ -88,7 +85,6 @@ def printBoard(board, isFalse):
 	else:
 		print "FAIL:"	
 	
-
 	for row in board:
 		for point in row:
 			print point, ' ', 
