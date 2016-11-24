@@ -1,0 +1,3 @@
+Joseph Mulray
+
+Had a difficult time running and testing junit tests. Got it to work eventually with the build.xml, but spend hours trying javac -cp /usr/share/java/junit4.jar:. *.java, and trying to get tests to run on own. Didnt know if it was ant file or importing junit, kept getting uses or overrides a deprecated API when running on own.

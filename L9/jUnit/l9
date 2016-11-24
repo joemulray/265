@@ -1,0 +1,67 @@
+Joseph Mulray
+Lab 9 Debugging
+November 20 2016
+
+Q1
+After running bug3 it produced the following error, Segmentation fault (core dumped).
+There is a new executable file called bug3 also recently modified a file called core.
+
+Q2
+The functions that bombed was the following:
+#1  0x00000000004009ad in inTable ()
+#2  0x0000000000400920 in main ()
+
+Q3
+___________________________________________________________________
+bug1.c error:
+format '%d' expects argument of type 'int *', but argument 2 has type 'int' [-Wformat=]
+  scanf( "%d", n );
+
+Fixed the bug by passing by reference value n, scanf( "%d", &n );. It expected an argument type of reference, not value.
+
+____________________________________________________________________
+bug2.c error:
+
+format '%d' expects argument mf type 'int', but argument 2 has type 'double' [-Wformat=]
+  printf("Pi=%d, n=%f\n", pi, n);
+
+format '%f' expects argument of type 'double', but argument 3 has type 'int
+
+Fixed the bug by replacing the %d and %f and swapping them. %d expects an argument type of int, and %f for a double type argument.
+
+printf("Pi=%d, n=%f\n", pi, n); 
+To:
+printf("Pi=%f, n=%d\n", pi, n);
+
+___________________________________________________________________
+bug3.c error:
+Segmentation fault (core dumped)
+
+Fixed the bug by incrementing numlines after the pointer is returned by strdup( buff );, this was causing the Segmentation error because trying read and write to memory allocation that didnt exist.
+
+st[ numLines ] = strdup( buff );
+++numLines;
+
+increment after allocation.
+___________________________________________________________________
+avg.c error:
+format '%d' expects argument of type 'int *', but argument 2 has type 'int' [-Wformat=]
+  scanf("%d",n);
+
+fixed by passing by reference value n, scanf("%d", &n);
+___________________________________________________________________
+A program that causes a segmentation error.
+Check where you are trying to read or write an illegal memory location, usually causes of segmentation faults are reguarding that, could be an issue with allocating memory or trying to access memory that does not exist.
+
+___________________________________________________________________
+quicksortBug.c error:
+undefined reference to `main'
+
+Fixed, forgot to include brackets for for statement, which are needed in c
+
+Q4
+Compiler cannot catch this because is not a syntax error, the user forgot to put brackets on for loop so it will only run the first line below the for loop, the compiler does not know that you wanted several lines, it is a logic problem not syntax, You can see this in the stack because the same value is repeated over and over again.
+
+Q5.
+Using qsort to sort integers and accidently pass the string comparison function will cause an error because it the string comparison cant tell the difference between integer values.
+
