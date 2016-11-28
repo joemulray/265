@@ -1,0 +1,26 @@
+<project default="compile">
+
+	<target name="run">
+	<javac srcdir='./' includes='JavaCalc.java' includeantruntime = "false"/>
+	<java classname = "JavaCalc" fork = "true">
+	<arg value = "input.infix">
+
+</arg>
+</java>
+</target>
+
+
+	<target name="compile">
+	<javac srcdir='./' includes='JavaCalc.java, Token.java, opType.java, Operator.java, Operand.java' includeantruntime = "false"/>
+
+	
+</target>
+
+	<target name="doc">
+	<javadoc destdir = './doc' sourcefiles = 'JavaCalc.java, opType.java'/>
+	
+
+	</target>
+
+
+</project>
