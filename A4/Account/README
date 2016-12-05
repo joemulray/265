@@ -1,0 +1,9 @@
+Joseph Mulray
+Assignment 4
+
+Did not include the sample.db file in the directory, need to set the ACCT_LIST enviorment before running,
+
+export ACCT_LIST = 'path to database file'
+
+Works fine after setting that!
+

@@ -1,0 +1,274 @@
+#!/usr/bin/python
+"""
+Joseph Mulray
+Assingment 4, Bank Transitions
+12/4/16
+Description: command-line utility for bank transactions
+"""
+
+import sys, time, os, math, random
+
+def display(data):
+	""" displays output for user, tailored to argument passed 
+	and chooses appropriate function """ 
+
+	arg = sys.argv[1]
+
+	#continue to get input until user quits, or enters invalid choice
+	while True:
+
+		if arg == '-i':
+			print "\nInfo"
+
+		elif arg == '-h':
+			print "\nHistory"
+
+		elif arg == '-t':
+			print "\nTransaction"
+
+		print "----"
+
+
+		count = 1
+		isValid = []
+
+		#parse the input from file, only add non duplicate ids
+		for line in data:
+
+			accData = line.split(':')
+			accID = int(accData[0])
+			accName = accData[1]
+				
+
+			accInfo = [accName, accID]
+			
+			if accInfo not in isValid:
+				isValid.append(accInfo)
+
+		
+
+		#sort the the dict by name of person
+		isValid = sorted(isValid)
+
+		for person in isValid:
+
+			print  "%s) %s %s" % (count, person[0], person[1])
+			count += 1
+
+		#test user choice, call valid function
+		if arg == '-t':
+			print 'c)reate new accont '
+
+	
+		print 'q)uit\n'
+		choice = raw_input("Enter choice => ")
+
+		if choice == 'q':
+			return False
+
+		elif choice == 'c' and arg == '-t':
+			createAccount(isValid)
+
+		else:
+
+		#get unique id number from choice
+			try:
+				idNum =isValid[int(choice) -1][1]
+
+			except (IndexError, ValueError):
+				print "Invalid Choice: Exiting"
+				exit()
+
+			#get personal information from id Number, send to each respected function
+			personInfo = getPersonal(idNum,data)
+
+			if arg == '-i':
+				info(personInfo, idNum)
+
+			elif arg == '-h':
+				history(personInfo, idNum)
+
+			elif arg == '-t':
+				transaction(personInfo, idNum)
+
+
+
+def createAccount(isValid):
+	"""create account function, uses random generated  unique id"""
+
+	#seed time, get input
+	random.seed(time.time())
+	name = raw_input('\n\tEnter name: ')
+
+	date = (time.strftime("%y.%m.%d"))
+	ids = []
+
+	#get valid id number, a non existant one
+	newID = random.randint(1000,9999)
+
+	for person in isValid:
+		ids.append(person[1])
+
+	while newID in ids:
+		newID = random.randint(1000,9999)
+
+	print '\t%s %s: created' %(name, newID)
+
+	#store new person, in temp file
+	temp = open('temp.db', 'a')
+	temp.write('%s:%s:%s:%s:%s\n' % (newID, name, date, 'D', 0))
+	temp.close()
+
+
+
+
+
+
+def getPersonal(idNum,data):
+	"""helper function, returns all the information tied 
+	to account number chosen"""
+
+	personInfo = []
+
+	#cycle through file, get data associated with chosen idNumber
+	for line in data:
+
+		accInfo = line.split(':')
+		accountID = int(accInfo[0])
+
+		if idNum == accountID:
+			personInfo.append(line)
+
+	#return list of data from idNumber
+	return personInfo
+
+
+
+def info(personInfo, idNum):
+	"""info function, returns information and balance of the 
+	selected user """
+
+	balance = 0
+
+	#cycle through person's info, get total balance
+	for log in personInfo:
+
+		accInfo = log.split(':')
+		name = accInfo[1]
+
+		if accInfo[3] == 'D':
+			balance += float(accInfo[4])
+
+		else:
+			balance -= float(accInfo[4])
+
+
+	print '\n\taccount#: %s' % idNum
+	print '\tname: %s' % name
+
+	#For printing purposed so negative balance does not print $-20.00
+	if balance >= 0:
+
+		print '\tbalance: $%0.2f\n' %balance
+
+	else:
+		print '\tbalance: -$%0.2f\n' % math.fabs(balance)
+
+
+
+def history(personInfo, idNum):
+	"""history function, returns history of the 
+	selected user """
+
+	print''
+	
+	#split data for person, print history
+	for log in personInfo:
+		accInfo = log.split(':')
+
+		if accInfo[3] == 'D':
+			print '\t%s deposit $%0.2f' % (accInfo[2], float(accInfo[4]))
+		else:
+			print '\t%s withdrawl $%0.2f' % (accInfo[2], float(accInfo[4]))
+
+
+	print ''
+		
+
+	
+def transaction(personInfo, idNum):
+	"""transaction function, gets input amount and type of the 
+	selected user, writes to a temporary file """
+
+	#get current date, and input, store in temp file
+	date = (time.strftime("%y.%m.%d"))
+
+	trans = raw_input('\n\tW)ithdraw or D)eposit: ')
+
+	amount = raw_input('\tAmount: ')
+
+	for log in personInfo:
+		accInfo = log.split(':')
+		name = accInfo[1]
+
+
+
+	temp = open('temp.db', 'a')
+	temp.write('%s:%s:%s:%s:%s\n' % (idNum, name, date, trans, amount))
+	temp.close()
+	
+	print "\n\tTransaction Confirmed."
+
+
+def testArg():
+	"""function to test the arguments passed in.
+	and print usage message if not"""
+
+	if len(sys.argv) < 2:
+		print "No arguments passed. Exiting"
+		exit()
+
+	positive = ['-t', '-h', '-i']
+
+	#argument passed not in valid choices throw usage message
+	if sys.argv[1] not in positive:
+		print 'accounts: illegal option %s' % sys.argv[1]
+ 		print 'usage: accounts [-iht] ...'
+		exit()
+
+
+
+if __name__ == '__main__':
+	"""main function, if tempfile exists, move its
+	contents to the databse """
+
+	testArg()
+
+	#read from associated file, read lines
+	accFile = open(os.environ['ACCT_LIST'], 'r')
+	data = accFile.read().splitlines()
+	accFile.close()
+
+
+	display(data)
+
+	#try to read from temp file, id temp file DNE, catch error pass:
+	try:
+		tempFile = open('temp.db', 'r')
+		dataFile = open(os.environ['ACCT_LIST'], 'a')
+
+
+		#for each line in temp file append to database
+		exportData = tempFile.readlines()
+	
+		for line in exportData:
+			dataFile.write(line)			
+	
+		tempFile.close()
+		dataFile.close()
+
+		#remove temp file.
+		os.remove('temp.db')
+
+	except IOError:
+		pass
