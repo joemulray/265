@@ -1,0 +1,42 @@
+Joseph Mulray
+Lab 10
+Performance
+12/4/16
+
+Q1
+
+ n	   T(n)	     f(n) =Ên	 f(n)=n2	f(n)=n3
+--------------------------------------------------------------
+10000	2.384	0.0002384	2.384E-08	 2.384E-12
+20000	5.156	0.0002578	1.289E-08	 6.445E-13
+30000	8.08	0.000269333	8.97778E-09	 2.99259E-13
+40000	11.064	0.0002766	6.915E-09	 1.72875E-13
+50000	14.148	0.00028296	5.6592E-09	 1.13184E-13
+60000	17.14	0.000285667	4.76111E-09	 7.94E-14
+
+
+Conclusions:
+
+T(n) : is increasing to infinity, so T(n) = w( f(n)) and is bound below by a constant.
+f(n) : is increasing to infinity, so T(n) = w(f(x)) and is a lower bound
+f(n)^2 : is decreasing heading towards a zero or non zero constant, f(n) is an upper bound and T(n) = o(f(n))
+f(n)^3 : is decreasing heading towards zero, f(n) is an upper bound and T(n) = o(f(n))
+
+
+Q2
+ 
+ n	     T(n)	     f(n) =n      f(n)=n^2	   f(n)=n^3
+---------------------------------------------------------------------
+10000	45721062	4572.1062	4.57211E-05	 0.45721062
+20000	98107982	4905.3991	1.22635E-05	 0.245269955
+30000	153522280	5117.4093	5.68601E-06	 0.137058031
+40000	210173451	5254.3362	3.28396E-06	 0.131358407
+50000	265180908	5303.61816	2.12145E-06	 0.106072363
+60000	319847373	5330.78955	1.48077E-06	 0.088846493
+
+Conclusions:
+T(n) : is increasing tending towards a non-zero constant, so T(n) = w(1) and is bound below by a constant.
+f(n) : is increasing to infinity, so T(n) is bound below by a line and T(n) = w(f(x)).
+f(n)^2 : is decreasing towards zero or a non zero constant, so T(n) = o(f(n)).
+f(n)^3 : is decreasing towards zero, so T(n) = o(f(n)) and f(n) is an upper bound.
+
