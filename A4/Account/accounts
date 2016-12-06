@@ -28,7 +28,6 @@ def display(data):
 
 		print "----"
 
-
 		count = 1
 		isValid = []
 
@@ -37,15 +36,12 @@ def display(data):
 
 			accData = line.split(':')
 			accID = int(accData[0])
-			accName = accData[1]
-				
+			accName = accData[1]	
 
 			accInfo = [accName, accID]
 			
 			if accInfo not in isValid:
-				isValid.append(accInfo)
-
-		
+				isValid.append(accInfo)		
 
 		#sort the the dict by name of person
 		isValid = sorted(isValid)
@@ -121,9 +117,6 @@ def createAccount(isValid):
 
 
 
-
-
-
 def getPersonal(idNum,data):
 	"""helper function, returns all the information tied 
 	to account number chosen"""
@@ -191,10 +184,8 @@ def history(personInfo, idNum):
 		else:
 			print '\t%s withdrawl $%0.2f' % (accInfo[2], float(accInfo[4]))
 
-
 	print ''
 		
-
 	
 def transaction(personInfo, idNum):
 	"""transaction function, gets input amount and type of the 
