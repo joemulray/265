@@ -6,8 +6,9 @@
 import sys
 import random
 
-"""check if board is a success or failure"""
+
 def success(board):
+	"""check if board is a success or failure"""
 
 	isTrue = True
 
@@ -19,8 +20,8 @@ def success(board):
 
 	return isTrue	
 
-"""creating the board, depending on user input"""
 def createBoard():
+	"""creating the board, depending on user input"""
 
 	#set variables for the arguements passed in
 	numRows = int(sys.argv[1])
@@ -35,9 +36,10 @@ def createBoard():
 	return board
 
 
-"""checking for available moves, use recursion to conitinue to replace moves until no 
-moves are available, then run suceess"""
+
 def getMoves(board, move=1, rowPos=0, colPos=0):
+	"""checking for available moves, use recursion to conitinue to replace moves until no 
+	moves are available, then run suceess"""
 	
 	#increment number of moves, create list of available positions
 	move += 1	
@@ -75,10 +77,9 @@ def getMoves(board, move=1, rowPos=0, colPos=0):
 		getMoves(board, move, ranPoint[0], ranPoint[1])
 
 
-"""print board and pass or fail value"""
 def printBoard(board, isFalse):	
+	"""print board and pass or fail value"""
 
-	#print board after succes or failure message
 	print ""	
 	if isFalse:
 		print "SUCCESS:"
@@ -93,8 +94,9 @@ def printBoard(board, isFalse):
 	print ""
 
 
-"""run program"""	
+
 if __name__ == '__main__':
+	"""run program"""	
 	
 	#exit if less than 3 arguments are passed in
 	if len(sys.argv) < 4:
