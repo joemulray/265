@@ -1,9 +1,6 @@
-Joseph Mulray
-Assignment 4
-
-Did not include the sample.db file in the directory, need to set the ACCT_LIST enviorment before running,
+#Assignment 4 Bank Transactions
 
 export ACCT_LIST = 'path to database file'
 
-Works fine after setting that!
+> Does not update available names, after creating a transaction, Will need to do that 
 
